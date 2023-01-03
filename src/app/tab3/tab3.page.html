@@ -1,17 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modules</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Modules</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!--<div id="container">
+    <ion-card>
+      <ion-card-title>Modules</ion-card-title>
+      <ion-card-content>
+        <ion-item *ngFor="let modules2 of profile">
+          Module Number: {{modules2.moduleNo}} <br>
+          Module Name: {{modules2.moduleName}} <br>
+          Credits: {{modules2.credits}} <br>
+          Website: {{modules2.website}} <br>
+          Location: {{modules2.location}} <br>
+          Room: {{modules2.room}} <br>
+          
+        </ion-item>
+        
+    </ion-card-content>
+    </ion-card>
+  </div>-->
+ 
+  <!--<ion-list>
+    <ion-item *ngFor='let modules of newModules' button (click)="openPage(modules)" detail>
+      {{modules.moduleName}} {{modules.moduleNo}}
+    </ion-item>
+  </ion-list>-->
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-list>
+    <ion-item *ngFor='let modules2 of profile' button (click)="openPage(modules2)" detail>
+      {{modules2.moduleName}} {{modules2.location}}
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+
+
+

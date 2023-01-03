@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Extra Module Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Module Name</ion-label>
+    <ion-input [(ngModel)]="module.moduleName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Credits</ion-label>
+    <ion-textarea [(ngModel)]="module.credits" rows="2"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Website</ion-label>
+    <ion-textarea [(ngModel)]="module.website" rows="2"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Location</ion-label>
+    <ion-textarea [(ngModel)]="module.location" rows="2"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Room</ion-label>
+    <ion-textarea [(ngModel)]="module.room" rows="2"></ion-textarea>
+  </ion-item>
+</ion-content>
+<!-- Only show Add Module button if no module No
+ has been passed, otherwise its being used to update/delete -->
+ <ion-footer *ngIf="!module.moduleNo">
+  <ion-toolbar color="success">
+    <ion-button expand="full" fill="clear" color="light" (click)="addModule()">
+      <ion-icon name="checkmark" slot="start"></ion-icon>
+      Add Module
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+ <!-- Show these buttons if a moduleNo has been passed with the router. If there 
+ is a moduleNo it means that the page is being used to update/delete a student -->
+<ion-footer *ngIf="module.moduleNo">
+  <ion-row no-padding text-center>
+    <ion-col size="6">
+      <ion-button expand="block" fill="outline" color="danger" (click)="deleteModule()">
+        <ion-icon name="trash" slot="start"></ion-icon>
+        Delete
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button expand="block" fill="solid" color="success" (click)="updateModule()">
+        <ion-icon name="save" slot="start"></ion-icon>
+        Update
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

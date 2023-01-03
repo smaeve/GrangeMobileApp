@@ -1,17 +1,108 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lecturers</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Lecturers</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!--<ion-list>
+    <ion-item *ngFor='let lecturer of newLecturers'>
+      {{lecturer.firstName}} {{lecturer.lastName}}
+    </ion-item>
+  </ion-list>-->
+  <div id="container">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>College Staff</ion-card-subtitle>
+        <ion-card-title>List of Lecturers</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        TU Dublin prides itself in being a leading educator in the areas of
+        creativity, technology, innovation and leadership. This would not be
+        possible without the lecturers that teach through years of experience
+        and skill. Feel free to get in touch with any of our lecturers if you
+        have a query.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content *ngFor="let lecturers2 of profile">
+        <ion-item>
+          Staff Number: {{lecturers2.staffNumber}} <br>
+          Name: {{lecturers2.firstName}} {{lecturers2.lastName}} <br>
+          Module 1: {{lecturers2.moduleNo1}} <br>
+          Module 2: {{lecturers2.moduleNo2}} <br>
+          Email: {{lecturers2.email}} <br>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+  <ion-card>
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <h1>Blog</h1>
+      <ion-button (click)="openUrl()" fill="outline" slot="end">View</ion-button>
+    </ion-item>
+  
+    <ion-card-content>
+      Keep up to date with us
+    </ion-card-content>
+  </ion-card>
+
+  <!--Card to display our temperature-->
+  <ion-card id="weather">
+    <ion-item lines="none">
+      <p>Weather</p><br>
+      <ion-label slot="end">{{todayDate | date: "EEE dd MMM"}}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <span id="temp">
+        <!--Convert to degrees Celsius and round to 0 dp-->
+        {{(weatherTemp?.temp - 273.15).toFixed(0)}}°C
+      </span>
+      <img [src]="weatherIcon">
+    </ion-item>
+    <ion-item>
+      <ion-icon name="location"></ion-icon>
+      <span>{{cityName}}</span>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-img src="/assets/images/tud_ionic_blog.jpg"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Latest News</ion-card-subtitle>
+      <ion-card-title>Professor Kelly wins Sustainability Award</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Professor Kelly from the School of Chemistry became the
+      first lecturer from TU Dublin to be awarded with the Sustainability
+      Award from the Department of Agriculture after her research on 
+      Irish in-season farming.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-img src="/assets/images/blogImage2.jpeg"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Dresden Panel for Teaching</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This year, a group of lecturers from the School of Digital Media travelled
+      to Dresden to take part in the EU conference for Innovation and Design.
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
+

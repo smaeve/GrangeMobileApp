@@ -1,0 +1,21 @@
+<ion-header >
+  <ion-toolbar>
+    <!-- <ion-title *ngIf="!formChanged">Delete Student</ion-title> -->
+      <ion-title *ngIf="!formChanged">Delete Student</ion-title>
+      <ion-title *ngIf="formChanged">Update Student</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tab 1" (click)="dismiss(false)"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content (load)="alert('loaded')">
+  <ion-input type="text" [(ngModel)]="newStudent.studentID" placeholder="Student ID" disabled></ion-input>
+  <ion-input type="text" [(ngModel)]="newStudent.firstName" placeholder="First Name" (ionInput)="formChanged=true"></ion-input>
+  <ion-input type="text" [(ngModel)]="newStudent.lastName" placeholder="Last Name" (ionInput)="formChanged=true"></ion-input>
+  <ion-input type="text" [(ngModel)]="newStudent.moduleNo1" placeholder="Module 1" (ionInput)="formChanged=true"></ion-input>
+  <ion-input type="text" [(ngModel)]="newStudent.moduleNo2" placeholder="Module 2" (ionInput)="formChanged=true"></ion-input>
+  <ion-input type="text" [(ngModel)]="newStudent.courseID" placeholder="Course ID" (ionInput)="formChanged=true"></ion-input>
+  <!-- <ion-button (click)="deleteStudent()" expand='block'>Delete Student</ion-button> -->
+  <ion-button (click)="deleteStudent()" expand='block' *ngIf="formChanged == false">Delete Student</ion-button>
+  <ion-button (click)="updateStudent()" expand='block' *ngIf="formChanged == true">Update Student</ion-button>
+</ion-content>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">A2grangemobile</string>
+    <string name="title_activity_main">A2grangemobile</string>
+    <string name="package_name">io.ionic.starter</string>
+    <string name="custom_url_scheme">io.ionic.starter</string>
+
+    <!--For Google Login in the capacitor app-->
+     <string name="server_client_id">491288604931-hhgltnleqdqugrs4boko8gr1uam05sj5.apps.googleusercontent.com</string>
+</resources>

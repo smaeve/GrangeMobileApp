@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Module Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content padding>
+  <ion-card *ngIf="modules2">
+    <ion-card-header>
+      <ion-card-title> {{ modules2.moduleName}}: {{ modules2.location }} </ion-card-title>
+      <ion-card-subtitle> {{ modules2.credits }} credits </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item><ion-label>Location:</ion-label> {{ modules2.location }}</ion-item>
+      <ion-item><ion-label>Room </ion-label> {{ modules2.room }}</ion-item>
+      <ion-item><ion-label>Website </ion-label> {{ modules2.website }}</ion-item>
+    </ion-card-content>
+  </ion-card>
+  </ion-content>
+
+</ion-content>

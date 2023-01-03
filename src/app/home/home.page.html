@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text color="black">
+    <h1>Welcome to GrangeMobile</h1>
+    <h3>An app for all your college needs</h3>
+  </ion-text>
+  <ion-button expand="full" color="success" (click)="signIn()" *ngIf="!user">
+    <ion-icon name ="logo-google" slot="start"></ion-icon>Sign in with Google
+  </ion-button>
+  <ion-button expand="full" (click)="signOut()" *ngIf="user">Sign Out</ion-button>
+  <ion-button expand="full" color="medium" (click)="refresh()" *ngIf="!user">Try Refresh</ion-button>
+
+  <ion-item *ngIf="user">
+    <ion-avatar slot="start">
+      <img [src]="user.imageURl"/>
+  </ion-avatar>
+  <ion-label>
+    {{user.givenName}} {{user.familyName}}
+      <p>{{user.email}}</p>
+    </ion-label>
+  </ion-item>
+
+  
+    <ion-img src="/assets/images/tudCampus.jpg"></ion-img>
+
+    <div id="container">
+      <ion-button (click)="openPage('students')"  expand='block'>Open Students</ion-button>
+      <ion-button (click)="openPage('lecturers')" name="lecturers" id="lecturers" expand='block'>Open Lecturers</ion-button>
+      <ion-button (click)="openPage('modules')" name="modules" id="modules" expand='block'>Open Modules</ion-button>
+    </div>
+
+    <div id="container">
+      <div #map id="map"></div>
+    </div>
+
+    <ion-button (click)="getPosition()">Get Position</ion-button>
+    <br>
+    <ion-grid>
+      <ion-row *ngFor="let key of keys">
+        <ion-col style="text-align: right;">{{key}}:</ion-col>
+        <ion-col style= "text-align: left;">{{location[key]}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <h3>My coordinates</h3>
+    <p>latitude: <span id="latitude"></span>&deg;<br>
+      longitude: <span id="longitude"></span>&deg;
+    </p>
+<script>
+  
+  /*if ('geolocation' in navigator) {
+      console.log('geolocation available');
+      //get the current position
+      //when it's ready, console.log it
+      //it will say http://localhost:8100 wants to know your location
+      //user has option to allow or block
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;;
+        document.getElementById('latitude').textContent = lat;
+        document.getElementById('longitude').textContent = lon;
+        console.log(position);
+    });
+    }else{
+      console.log('geolocation not available');
+    }*/
+</script>
+<!-- Create a Floating Action Button for creating students using a router link to /module page-->
+<ion-content>
+  <h1>Add Extra Modules</h1>
+  <h3>Don't see your modules listed in the Modules tab?</h3>
+  <h3>You can manually input them here</h3>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button routerLink="/module-details">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+<!-- Lists modules and create a routerLink to module/:moduleNo, passing the current module object along 
+to the module details page where it will be needed to read the details from the collection-->
+<ion-list>
+  <ion-item button *ngFor="let module of (modules | async)" [routerLink]="['/module-details', module.moduleNo]">
+    {{ module.moduleName }} : {{ module.credits }} credit module
+  </ion-item>
+</ion-list>
+
+
+<!--<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>-->
+
+</ion-content>
